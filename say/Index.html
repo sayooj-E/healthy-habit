@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Habits for Students</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f9f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header and Nav */
+    header {
+      background-color: #007a33;
+      color: white;
+      padding: 20px;
+      padding-left: 60px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #007a33;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background-color: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #007a33;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      padding-left: 1.2em;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #007a33;
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007a33;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005a24;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e0e0e0;
+      font-size: 14px;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4em;
+      }
+
+      header p {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header and Hamburger -->
+  <header>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h1>Healthy Habits for Students</h1>
+    <p>Simple ways to stay healthy, focused, and stress-free.</p>
+
+    <div class="nav-menu" id="navMenu">
+      <a href="Index.html">Home</a>
+      <a href="#">More Info</a>
+      <a href="contactinfo.html">Contact Info</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="login.html" onclick="signOut()">Sign Out</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <h2>🧠 Why Healthy Habits Matter</h2>
+      <p>Maintaining good health helps students stay active, alert, and productive during studies and daily life.</p>
+    </section>
+
+    <section>
+      <h2>🌟 Top Healthy Habits</h2>
+      <ul>
+        <li>Drink 6–8 glasses of water daily 💧</li>
+        <li>Eat fruits and vegetables 🍎</li>
+        <li>Get 7–8 hours of sleep 🛏</li>
+        <li>Take short study breaks 🧍</li>
+        <li>Stretch or walk daily 🚶‍♀️</li>
+        <li>Limit junk food & screen time 📵</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🍴 Healthy Snack Ideas</h2>
+      <ul>
+        <li>Fruit salad</li>
+        <li>Sprouts</li>
+        <li>Boiled eggs</li>
+        <li>Smoothies</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>💬 Share Your Healthy Habit</h2>
+      <form onsubmit="event.preventDefault(); alert('Thank you for sharing!');">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="habit">Your Healthy Habit:</label>
+        <textarea id="habit" name="habit" rows="4" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Healthy Students. Created by [Your Name]</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function signOut() {
+      alert("You have signed out.");
+      // Add redirect or logic here if needed
+    }
+
+    // Close menu if clicked outside
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('navMenu');
+      const burger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Habits Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007a33;
+      color: white;
+      padding: 20px;
+      padding-left: 60px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 1.6em;
+      margin: 0;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #007a33;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #007a33;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question h3 {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      background-color: #007a33;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #005a24;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Hamburger Menu -->
+  <header>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h1>Healthy Habits Quiz</h1>
+
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="#">More Info</a>
+      <a href="#">Contact Info</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="#" onclick="signOut()">Sign Out</a>
+    </div>
+  </header>
+
+  <!-- Quiz Content -->
+  <main>
+    <section>
+      <h2>Take this short quiz to test your healthy habit knowledge!</h2>
+
+      <form id="quizForm">
+        <div class="question">
+          <h3>1. How many hours of sleep should students get each night?</h3>
+          <label><input type="radio" name="q1" value="correct" required> 7–8 hours</label>
+          <label><input type="radio" name="q1" value="wrong"> 4–5 hours</label>
+          <label><input type="radio" name="q1" value="wrong"> 10+ hours</label>
+        </div>
+
+        <div class="question">
+          <h3>2. Which is the healthiest snack?</h3>
+          <label><input type="radio" name="q2" value="wrong" required> Potato chips</label>
+          <label><input type="radio" name="q2" value="correct"> Fruit salad</label>
+          <label><input type="radio" name="q2" value="wrong"> Chocolate bar</label>
+        </div>
+
+        <div class="question">
+          <h3>3. How many glasses of water should you drink daily?</h3>
+          <label><input type="radio" name="q3" value="correct" required> 6–8 glasses</label>
+          <label><input type="radio" name="q3" value="wrong"> 2–3 glasses</label>
+          <label><input type="radio" name="q3" value="wrong"> None</label>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+        <p class="result" id="resultText"></p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function signOut() {
+      alert("You have signed out.");
+      // You can add redirection logic here
+    }
+
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('navMenu');
+      const burger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const answers = document.querySelectorAll('input[type="radio"]:checked');
+      let score = 0;
+      answers.forEach(ans => {
+        if (ans.value === 'correct') score++;
+      });
+      const result = document.getElementById('resultText');
+      result.textContent = `You scored ${score} out of 3!`;
+    });
+  </script>
+</body>
+</html>
